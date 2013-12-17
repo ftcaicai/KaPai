@@ -1,0 +1,7 @@
+C:\Users\raogangshan.ICEE\Documents\GitHub\KaPai\CodeProject\Tools\KapaiTool\DLLToSerializer\bin\Release\DLLToSerializer.exe
+C:\Users\raogangshan.ICEE\Documents\GitHub\KaPai\CodeProject\Tools\KapaiTool\DLLToSerializer\bin\Release\DLLToSerializer.pdb
+C:\Users\raogangshan.ICEE\Documents\GitHub\KaPai\CodeProject\Tools\KapaiTool\DLLToSerializer\bin\Release\protobuf-net.dll
+C:\Users\raogangshan.ICEE\Documents\GitHub\KaPai\CodeProject\Tools\KapaiTool\DLLToSerializer\bin\Release\protobuf-net.xml
+C:\Users\raogangshan.ICEE\Documents\GitHub\KaPai\CodeProject\Tools\KapaiTool\DLLToSerializer\obj\x86\Release\ResolveAssemblyReference.cache
+C:\Users\raogangshan.ICEE\Documents\GitHub\KaPai\CodeProject\Tools\KapaiTool\DLLToSerializer\obj\x86\Release\DLLToSerializer.exe
+C:\Users\raogangshan.ICEE\Documents\GitHub\KaPai\CodeProject\Tools\KapaiTool\DLLToSerializer\obj\x86\Release\DLLToSerializer.pdb
