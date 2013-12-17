@@ -1,0 +1,7 @@
+message VipConfig
+{
+	required int32 Level = 1;
+	required int32 Cosume = 2;
+	required string desc = 3;
+	required string desc_en = 4;
+}
