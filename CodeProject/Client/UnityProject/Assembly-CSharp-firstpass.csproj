@@ -46,6 +46,40 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Plugins\FingerGestures\Scripts\Base\ContinuousGestureRecognizer.cs" />
+     <Compile Include="Assets\Plugins\FingerGestures\Scripts\Base\DiscreteGestureRecognizer.cs" />
+     <Compile Include="Assets\Plugins\FingerGestures\Scripts\Base\FingerEventDetector.cs" />
+     <Compile Include="Assets\Plugins\FingerGestures\Scripts\Base\GestureRecognizer.cs" />
+     <Compile Include="Assets\Plugins\FingerGestures\Scripts\Base\GestureRecognizerDelegate.cs" />
+     <Compile Include="Assets\Plugins\FingerGestures\Scripts\Components\FingerClusterManager.cs" />
+     <Compile Include="Assets\Plugins\FingerGestures\Scripts\Components\ScreenRaycaster.cs" />
+     <Compile Include="Assets\Plugins\FingerGestures\Scripts\Finger Event Detectors\FingerDownDetector.cs" />
+     <Compile Include="Assets\Plugins\FingerGestures\Scripts\Finger Event Detectors\FingerHoverDetector.cs" />
+     <Compile Include="Assets\Plugins\FingerGestures\Scripts\Finger Event Detectors\FingerMotionDetector.cs" />
+     <Compile Include="Assets\Plugins\FingerGestures\Scripts\Finger Event Detectors\FingerUpDetector.cs" />
+     <Compile Include="Assets\Plugins\FingerGestures\Scripts\FingerGestures.cs" />
+     <Compile Include="Assets\Plugins\FingerGestures\Scripts\Gesture Recognizers\DragRecognizer.cs" />
+     <Compile Include="Assets\Plugins\FingerGestures\Scripts\Gesture Recognizers\LongPressRecognizer.cs" />
+     <Compile Include="Assets\Plugins\FingerGestures\Scripts\Gesture Recognizers\PinchRecognizer.cs" />
+     <Compile Include="Assets\Plugins\FingerGestures\Scripts\Gesture Recognizers\PointCloudGestureTemplate.cs" />
+     <Compile Include="Assets\Plugins\FingerGestures\Scripts\Gesture Recognizers\PointCloudRegognizer.cs" />
+     <Compile Include="Assets\Plugins\FingerGestures\Scripts\Gesture Recognizers\SwipeRecognizer.cs" />
+     <Compile Include="Assets\Plugins\FingerGestures\Scripts\Gesture Recognizers\TapRecognizer.cs" />
+     <Compile Include="Assets\Plugins\FingerGestures\Scripts\Gesture Recognizers\TwistRecognizer.cs" />
+     <Compile Include="Assets\Plugins\FingerGestures\Scripts\Input Providers\FGInputProvider.cs" />
+     <Compile Include="Assets\Plugins\FingerGestures\Scripts\Input Providers\FGMouseInputProvider.cs" />
+     <Compile Include="Assets\Plugins\FingerGestures\Scripts\Input Providers\FGTouchInputProvider.cs" />
+     <Compile Include="Assets\Plugins\FingerGestures\Scripts\Toolbox\Camera\TBDragView.cs" />
+     <Compile Include="Assets\Plugins\FingerGestures\Scripts\Toolbox\Camera\TBLookAtTap.cs" />
+     <Compile Include="Assets\Plugins\FingerGestures\Scripts\Toolbox\Camera\TBOrbit.cs" />
+     <Compile Include="Assets\Plugins\FingerGestures\Scripts\Toolbox\Camera\TBPan.cs" />
+     <Compile Include="Assets\Plugins\FingerGestures\Scripts\Toolbox\Camera\TBPinchZoom.cs" />
+     <Compile Include="Assets\Plugins\FingerGestures\Scripts\Toolbox\TBDragToMove.cs" />
+     <Compile Include="Assets\Plugins\FingerGestures\Scripts\Toolbox\TBHoverChangeMaterial.cs" />
+     <Compile Include="Assets\Plugins\FingerGestures\Scripts\Toolbox\TBHoverChangeScale.cs" />
+     <Compile Include="Assets\Plugins\FingerGestures\Scripts\Toolbox\TBPinchToScale.cs" />
+     <Compile Include="Assets\Plugins\FingerGestures\Scripts\Toolbox\TBQuickSetup.cs" />
+     <Compile Include="Assets\Plugins\FingerGestures\Scripts\Toolbox\TBTwistToRotate.cs" />
      <Compile Include="Assets\Plugins\LitJson\IJsonWrapper.cs" />
      <Compile Include="Assets\Plugins\LitJson\IOSJsonExtend.cs" />
      <Compile Include="Assets\Plugins\LitJson\JsonData.cs" />
@@ -66,6 +100,7 @@
      <None Include="Assets\NGUI\Resources\Shaders\GUI - Text Shader (SoftClip).shader" />
      <None Include="Assets\NGUI\Resources\Shaders\Unlit - Dynamic Font (AlphaClip).shader" />
      <None Include="Assets\NGUI\Resources\Shaders\Unlit - Masked Colored.shader" />
+     <None Include="Assets\Plugins\FingerGestures\Readme.txt" />
      <None Include="Assets\NGUI\Examples\Atlases\Wooden\Arimo18.txt" />
      <None Include="Assets\NGUI\Resources\Shaders\Unlit - Transparent Colored (Packed) (AlphaClip) .shader" />
      <None Include="Assets\NGUI\Examples\Atlases\SciFi\SciFi Font - Header.txt" />
@@ -91,14 +126,14 @@
      <None Include="Assets\NGUI\Examples\Atlases\SciFi\SciFi Font - Normal.txt" />
      <None Include="Assets\NGUI\Resources\Shaders\Unlit - Transparent Colored (SoftClip).shader" />
      <None Include="Assets\NGUI\Examples\Models\Orc Armor\Orc Armor.shader" />
+ <Reference Include="m-client-proto">
+ <HintPath>Assets\Libs\m-client-proto.dll</HintPath>
+ </Reference>
  <Reference Include="MySerializer">
  <HintPath>Assets\Libs\MySerializer.dll</HintPath>
  </Reference>
  <Reference Include="protobuf-net">
  <HintPath>Assets\Libs\protobuf-net.dll</HintPath>
- </Reference>
- <Reference Include="m-client-proto">
- <HintPath>Assets\Libs\m-client-proto.dll</HintPath>
  </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

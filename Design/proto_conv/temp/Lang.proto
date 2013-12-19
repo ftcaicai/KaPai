@@ -1,0 +1,5 @@
+message Lang
+{
+	required int32 id = 1;
+	required string chinese = 2;
+}

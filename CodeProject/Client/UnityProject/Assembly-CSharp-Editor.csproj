@@ -46,6 +46,23 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Editor\FingerGestures\DragRecognizerInspector.cs" />
+     <Compile Include="Assets\Editor\FingerGestures\FingerDownDetectorInspector.cs" />
+     <Compile Include="Assets\Editor\FingerGestures\FingerEventDetectorInspector.cs" />
+     <Compile Include="Assets\Editor\FingerGestures\FingerGesturesEditorUtils.cs" />
+     <Compile Include="Assets\Editor\FingerGestures\FingerGesturesInspector.cs" />
+     <Compile Include="Assets\Editor\FingerGestures\FingerHoverDetectorInspector.cs" />
+     <Compile Include="Assets\Editor\FingerGestures\FingerMotionDetectorInspector.cs" />
+     <Compile Include="Assets\Editor\FingerGestures\FingerUpDetectorInspector.cs" />
+     <Compile Include="Assets\Editor\FingerGestures\GestureRecognizerInspector.cs" />
+     <Compile Include="Assets\Editor\FingerGestures\LongPressRecognizerInspector.cs" />
+     <Compile Include="Assets\Editor\FingerGestures\PinchRecognizerInspector.cs" />
+     <Compile Include="Assets\Editor\FingerGestures\PointCloudGestureEditor.cs" />
+     <Compile Include="Assets\Editor\FingerGestures\PointCloudGestureTemplateInspector.cs" />
+     <Compile Include="Assets\Editor\FingerGestures\PointCloudRecognizerInspector.cs" />
+     <Compile Include="Assets\Editor\FingerGestures\SwipeRecognizerInspector.cs" />
+     <Compile Include="Assets\Editor\FingerGestures\TapRecognizerInspector.cs" />
+     <Compile Include="Assets\Editor\FingerGestures\TwistRecognizerInspector.cs" />
      <Compile Include="Assets\NGUI\Examples\Scripts\InventorySystem\Editor\InvDatabaseInspector.cs" />
      <Compile Include="Assets\NGUI\Examples\Scripts\InventorySystem\Editor\InvFindItem.cs" />
      <Compile Include="Assets\NGUI\Scripts\Editor\ActiveAnimationEditor.cs" />
@@ -112,6 +129,7 @@
      <None Include="Assets\NGUI\Resources\Shaders\GUI - Text Shader (SoftClip).shader" />
      <None Include="Assets\NGUI\Resources\Shaders\Unlit - Dynamic Font (AlphaClip).shader" />
      <None Include="Assets\NGUI\Resources\Shaders\Unlit - Masked Colored.shader" />
+     <None Include="Assets\Plugins\FingerGestures\Readme.txt" />
      <None Include="Assets\NGUI\Examples\Atlases\Wooden\Arimo18.txt" />
      <None Include="Assets\NGUI\Resources\Shaders\Unlit - Transparent Colored (Packed) (AlphaClip) .shader" />
      <None Include="Assets\NGUI\Examples\Atlases\SciFi\SciFi Font - Header.txt" />
@@ -137,6 +155,15 @@
      <None Include="Assets\NGUI\Examples\Atlases\SciFi\SciFi Font - Normal.txt" />
      <None Include="Assets\NGUI\Resources\Shaders\Unlit - Transparent Colored (SoftClip).shader" />
      <None Include="Assets\NGUI\Examples\Models\Orc Armor\Orc Armor.shader" />
+ <Reference Include="m-client-proto">
+ <HintPath>Assets\Libs\m-client-proto.dll</HintPath>
+ </Reference>
+ <Reference Include="MySerializer">
+ <HintPath>Assets\Libs\MySerializer.dll</HintPath>
+ </Reference>
+ <Reference Include="protobuf-net">
+ <HintPath>Assets\Libs\protobuf-net.dll</HintPath>
+ </Reference>
  <Reference Include="UnityEditor.Graphs">
  <HintPath>E:\Program Files (x86)\Unity\Editor\Data\Managed\UnityEditor.Graphs.dll</HintPath>
  </Reference>
@@ -154,15 +181,6 @@
  </Reference>
  <Reference Include="UnityEditor.Android.Extensions">
  <HintPath>E:\Program Files (x86)\Unity\Editor\Data\PlaybackEngines\AndroidPlayer\EditorExtensions\UnityEditor.Android.Extensions.dll</HintPath>
- </Reference>
- <Reference Include="MySerializer">
- <HintPath>Assets\Libs\MySerializer.dll</HintPath>
- </Reference>
- <Reference Include="protobuf-net">
- <HintPath>Assets\Libs\protobuf-net.dll</HintPath>
- </Reference>
- <Reference Include="m-client-proto">
- <HintPath>Assets\Libs\m-client-proto.dll</HintPath>
  </Reference>
   </ItemGroup>
   <ItemGroup>
