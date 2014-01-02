@@ -1,0 +1,47 @@
+package myth;
+
+option java_package = "com.phoenix.protobuf";
+option optimize_for = SPEED;
+
+message IntValueProto {
+    required int32 value = 1;
+}
+
+message LongValueProto {
+    required int64 value = 1;
+}
+
+message BoolValueProto {
+    required bool value = 1;
+}
+
+message StringValueProto {
+    required string value = 1;
+}
+
+message IntStringProto {
+    required int32 intValue = 1;
+    required string stringValue = 2;
+}
+
+message IntValuesProto {
+    repeated int32 values = 1;
+}
+
+message VariableValueProto {
+    required int32 id = 1;          // 变量id
+    required int64 value = 2;       // 变量值
+}
+
+message VariableValuesProto {
+    repeated VariableValueProto values = 1;
+}
+
+message LoginProto {
+    required string loginSession = 1;
+}
+
+message CreateCharProto {
+    optional string name = 1;
+    optional int32 job = 2;
+}

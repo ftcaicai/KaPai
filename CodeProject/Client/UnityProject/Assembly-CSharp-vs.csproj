@@ -164,10 +164,15 @@
      <Compile Include="Assets\NGUI\Scripts\UI\UITexture.cs" />
      <Compile Include="Assets\NGUI\Scripts\UI\UITooltip.cs" />
      <Compile Include="Assets\NGUI\Scripts\UI\UIViewport.cs" />
+     <Compile Include="Assets\Scripts\Actions\LoadServers.cs" />
+     <Compile Include="Assets\Scripts\Common\ELoadStatus.cs" />
      <Compile Include="Assets\Scripts\Common\ProtoData.cs" />
      <Compile Include="Assets\Scripts\GameRoot.cs" />
      <Compile Include="Assets\Scripts\Manager\ConfigMgr.cs" />
      <Compile Include="Assets\Scripts\Manager\InputHandlerMgr.cs" />
+     <Compile Include="Assets\Scripts\Manager\NetMessageMgr.cs" />
+     <Compile Include="Assets\Scripts\Manager\PrefabParamMgr.cs" />
+     <Compile Include="Assets\Scripts\Network\ProtoMessage.cs" />
      <Compile Include="Assets\Test\TestConfig.cs" />
      <None Include="Assets\NGUI\Resources\Shaders\Unlit - Depth Cutout.shader" />
      <None Include="Assets\NGUI\Examples\Models\Orc\Orc Skin.shader" />
