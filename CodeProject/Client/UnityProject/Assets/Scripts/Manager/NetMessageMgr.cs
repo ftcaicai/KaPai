@@ -8,8 +8,12 @@ public class NetMessageMgr {
 	private MessageData		m_LoopData;
 	private bool			m_Enable;
 	private MySerializer	m_Serializer;
+	private ProtocolMgr		m_ProtocolMgr;
+	private ProtocolBase	m_Protocol;
 
 	public NetMessageMgr (){
+		m_ProtocolMgr = new ProtocolMgr();
+
 		m_Client = new XTcpClient();
 		m_Client.OnConnected += HandleOnConnected;
 		m_Client.OnDisconnected += HandleOnDisconnected;
@@ -31,7 +35,12 @@ public class NetMessageMgr {
 	void HandleOnConnected (object sender, DSCClientConnectedEventArgs e)
 	{
 		m_Enable = m_Client.Connected;
+		GameRoot.NotifyNetConnected(m_Enable);
 		Debug.Log("Connect to Server : " + m_Enable);
+	}
+
+	public void Reset (){
+		
 	}
 
 	public void Connect (string sip, int port) {
@@ -63,6 +72,10 @@ public class NetMessageMgr {
 			m_LoopData = m_Client.Loop();
 			if (m_LoopData != null) {
 				Debug.Log(":::[Loop]-" + m_LoopData.head.Length);
+				m_Protocol = m_ProtocolMgr.GetProtocol(m_LoopData.head.Type);
+				if (m_Protocol != null) {
+					m_Protocol.HandleMessage(m_LoopData);
+				}
 			}
 		}
 	}

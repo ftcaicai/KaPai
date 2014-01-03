@@ -5,12 +5,22 @@ public class GameRoot : MonoBehaviour {
 
 	public static GameRoot Instance;
 
+	private EConnectStatus		m_ConnectStatus;
+
+	#region singlon compoment
+
 	private PrefabParamMgr		m_PrefabParamMgr;
 	private InputHandlerMgr		m_InputHandlerMgr;
 	private ConfigMgr			m_ConfigMgr;
 	private NetMessageMgr		m_Net;
 
+	#endregion
+
+	#region temp property
+
 	private LoadServers			t_LoadServers;
+
+	#endregion
 
 	public PrefabParamMgr 		PrefabParamMgr {
 		get { return m_PrefabParamMgr; }
@@ -29,7 +39,26 @@ public class GameRoot : MonoBehaviour {
 	}
 
 	void Update (){
-		m_Net.OnUpdate ();
+		switch (m_ConnectStatus) {
+		case EConnectStatus.BeginConnect:
+		{
+			m_Net.Connect(PrefabParamMgr.sServerIP, PrefabParamMgr.iServerPort);
+			m_ConnectStatus = EConnectStatus.Connecting;
+		}
+			break;
+		case EConnectStatus.Connected:
+		{
+			m_Net.OnUpdate();
+		}
+			break;
+		case EConnectStatus.Error:
+		{
+			Debug.LogError("Net Error!");
+			m_Net.Reset();
+			m_ConnectStatus = EConnectStatus.None;
+		}
+			break;
+		}
 	}
 
 	void _Init (){
@@ -49,7 +78,16 @@ public class GameRoot : MonoBehaviour {
 	}
 
 	public static void NotifyGetSession (string sessionid, string serverip, int serverport){
-		Instance.t_LoadServers.enabled = false;
-		Instance.m_Net.Connect(serverip, serverport);
+		Instance.PrefabParamMgr.NotifyGetSession(serverip, serverport, sessionid);
+
+		Instance.m_ConnectStatus = EConnectStatus.BeginConnect;
+	}
+
+	public static void NotifyNetConnected (bool bresult){
+		if (bresult)
+			Instance.m_ConnectStatus = EConnectStatus.Connected;
+		else {
+			Instance.m_ConnectStatus = EConnectStatus.Error;
+		}
 	}
 }

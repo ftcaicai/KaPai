@@ -13,6 +13,7 @@ public class LoadServers: MonoBehaviour  {
 
 	private ELoadStatus		m_loadStatus;
 	private string 			m_sKey;
+	private string			m_sError;
 
 	void Awake (){
 		m_loadStatus = ELoadStatus.None;
@@ -20,10 +21,32 @@ public class LoadServers: MonoBehaviour  {
 	}
 
 	void OnGUI (){
-		m_sKey = GUI.TextField(new Rect(Screen.width / 2 - 80, Screen.height - 140, 80, 40), m_sKey);
-		if (GUI.Button(new Rect(Screen.width / 2 - 80, Screen.height - 80, 80, 40), "Login")) {
-			m_loadStatus = ELoadStatus.Start;
+		switch(m_loadStatus) {
+		case ELoadStatus.None:
+		{
+			m_sKey = GUI.TextField(new Rect(Screen.width / 2 - 80, Screen.height - 140, 80, 40), m_sKey);
+			if (!string.IsNullOrEmpty(m_sKey)) {
+				if (GUI.Button(new Rect(Screen.width / 2 - 80, Screen.height - 80, 80, 40), "Login")) {
+					m_loadStatus = ELoadStatus.Start;
+				}
+			}
 		}
+			break;
+		case ELoadStatus.Start:
+		{
+			GUILayout.Label("Get Sessionid  ...");
+		}
+			break;
+		case ELoadStatus.Error:
+		{
+			GUILayout.Label(m_sError);
+			if (GUI.Button(new Rect(Screen.width / 2 - 80, Screen.height - 80, 80, 40), "Reset")) {
+				m_loadStatus = ELoadStatus.None;
+			}
+		}
+			break;
+		}
+
 	}
 
 	void Update (){
@@ -33,6 +56,11 @@ public class LoadServers: MonoBehaviour  {
 			var param = GameRoot.Instance.PrefabParamMgr;
 			GetSessionID(param.sManagerIP, param.iManagerPort, m_sKey);
 			m_loadStatus = ELoadStatus.Waiting;
+		}
+			break;
+		case ELoadStatus.End:
+		{
+			enabled = false;
 		}
 			break;
 		}
@@ -69,13 +97,18 @@ public class LoadServers: MonoBehaviour  {
 				int serverport = int.Parse(jsondata["serverport"].ToString());
 
 				GameRoot.NotifyGetSession(sessionid, serverip, serverport);
+				m_loadStatus = ELoadStatus.End;
 			}
 			else {
 				Debug.LogError("Get SessionID error, result = " + result);	
+				m_sError = sJson;
+				m_loadStatus = ELoadStatus.Error;
 			}
 		}
 		else {
 			Debug.LogError("Get SessionID error!");
+			m_sError = www.error;
+			m_loadStatus = ELoadStatus.Error;
 		}
 	}
 }

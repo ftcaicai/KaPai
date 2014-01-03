@@ -3,6 +3,19 @@ package myth;
 option java_package = "com.phoenix.protobuf";
 option optimize_for = SPEED;
 
+enum MessageKey {
+	S2C_REALTIME = 1;
+	S2C_LOGINERROR = 2;
+	S2C_NOCHARRET = 3;
+	S2C_CREATECHARERROR = 4;
+	S2C_ENTERGAMERET = 5;
+
+
+	
+	C2S_LOGIN = 1001;
+	C2S_CREATECHAR = 1002;
+}
+
 message IntValueProto {
     required int32 value = 1;
 }
