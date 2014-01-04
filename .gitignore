@@ -7,3 +7,6 @@
 /CodeProject/Server/ProjectCard/ProjectCardManagerServer/ProjectCardManagerServer/dist/
 /CodeProject/Client/UnityProject/*.csproj
 
+/CodeProject/Server/ProjectCardServer/build/
+/CodeProject/Server/ProjectCardServer/dist/
+/CodeProject/Server/ProjectCardServer/nbproject/private/
