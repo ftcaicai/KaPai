@@ -34,4 +34,18 @@ public class Consts {
     public static final int DB_KEEPALIVE_INTERVAL = 3600000;                // 3600000ms,保证数据库连接不中断
     public static final String DB_KEEPALIVE_TEST_STATEMENT = "SELECT 1 FROM INFORMATION_SCHEMA.VIEWS WHERE table_name IS NULL";
     
+    public static final String MAP_CONFIG_FILEPATH = "mapConfig.json";      // map常量相关配置
+    public static final String VIP_CONFIG_FILEPATH = "vipConfig.json";      //vip常量相关配置
+    
+    
+    public static final int REWARD_ITEM_TYPE_CARD = 0;                      // 卡片
+    public static final int REWARD_ITEM_TYPE_ITEM = 1;                      // 物品
+    public static final int REWARD_ITEM_TYPE_GOLD = 2;                      // 黄金
+    public static final int REWARD_ITEM_TYPE_SILVER = 3;                    // 白银
+    public static final int REWARD_ITEM_TYPE_DIAMOND = 4;                   // 钻石
+    public static final int REWARD_ITEM_TYPE_POPULARITY = 5;                // 声望
+    public static final int REWARD_ITEM_TYPE_EXPERIENCE = 6;                // 经验值
+    public static final int REWARD_ITEM_TYPE_ENERGY = 7;                    // 体力值
+    
+    
 }

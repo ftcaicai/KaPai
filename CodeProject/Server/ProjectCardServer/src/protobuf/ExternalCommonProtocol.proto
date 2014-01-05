@@ -67,3 +67,16 @@ message VipProto{
     optional int32 lastDayExp = 3;
     optional int32 lastExpDay = 4;
 }
+
+message RewardItemProto {
+    required int32 type = 1;                     // 类型（0：卡片 1：物品 2：黄金 3：白银 4: 钻石 5：声望）
+    optional int32 id = 2;                       // id
+    optional int32 level = 3;                   // 等级
+    optional int32 num = 4;                     // 数量
+}
+
+message RewardProto {
+    repeated RewardItemProto items = 1;        // 奖品
+    optional int32 experience = 2;              // 经验    
+    optional int32 energy = 3;                  // 体力
+}
