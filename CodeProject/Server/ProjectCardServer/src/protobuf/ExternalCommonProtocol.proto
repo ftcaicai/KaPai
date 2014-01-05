@@ -3,6 +3,21 @@ package myth;
 option java_package = "com.phoenix.protobuf";
 option optimize_for = SPEED;
 
+enum ClientToServerMessageType{
+    C2S_LOGIN = 1;                   // 登录
+    C2S_CREATECHAR = 2;             // 创建角色
+}
+
+enum ServerToClientMessageType{
+    S2C_REALTIME = 1;               // 对时
+    
+    // 登录创建角色相关
+    S2C_LOGINERROR = 11;            // 登录失败
+    S2C_NOCHARRET = 12;             // 未创建角色
+    S2C_CREATECHARERROR = 13;      // 创建角色失败
+    S2C_ENTERGAMERET = 14;         // 进入游戏
+}
+
 message IntValueProto {
     required int32 value = 1;
 }
@@ -44,4 +59,11 @@ message LoginProto {
 message CreateCharProto {
     optional string name = 1;
     optional int32 job = 2;
+}
+
+message VipProto{
+    optional int32 exp = 1;
+    optional int32 level = 2;
+    optional int32 lastDayExp = 3;
+    optional int32 lastExpDay = 4;
 }
