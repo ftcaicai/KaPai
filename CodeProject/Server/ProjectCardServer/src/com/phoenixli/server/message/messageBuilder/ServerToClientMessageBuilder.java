@@ -4,6 +4,8 @@
  */
 package com.phoenixli.server.message.messageBuilder;
 
+import com.phoenix.protobuf.ExternalCommonProtocol.ContSignProto;
+import com.phoenix.protobuf.ExternalCommonProtocol.IntValueProto;
 import com.phoenix.protobuf.ExternalCommonProtocol.LongValueProto;
 import com.phoenixli.common.protobufMessage.ProtobufMessage;
 import com.phoenixli.common.protobufMessage.ProtobufMessageType;
@@ -30,5 +32,19 @@ public class ServerToClientMessageBuilder {
 
     public static ProtobufMessage buildCreateCharError() {
         return new ProtobufMessage(ProtobufMessageType.S2C_CREATECHARERROR, null);
+    }
+    
+    public static ProtobufMessage buildCumulativeRewardReceived() {
+        return new ProtobufMessage(ProtobufMessageType.S2C_CONTSIGN_CUMULATIVE_REWARD_RECEIVED, null);
+    }
+
+    public static ProtobufMessage buildReceivedConsecutiveSignReward(int day) {
+        IntValueProto.Builder builder = IntValueProto.newBuilder();
+        builder.setValue(day);
+        return new ProtobufMessage(ProtobufMessageType.S2C_CONTSIGN_CONSECUTIVE_REWARD_RECEIVED, builder.build());
+    }
+    
+    public static ProtobufMessage buildContSign(ContSignProto contSignProto) {
+        return new ProtobufMessage(ProtobufMessageType.S2C_CONTSIGN, contSignProto);
     }
 }

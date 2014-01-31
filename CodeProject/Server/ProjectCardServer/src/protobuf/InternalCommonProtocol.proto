@@ -5,6 +5,12 @@ option optimize_for = SPEED;
 
 import "src/protobuf/ExternalCommonProtocol.proto";
 
-message MessageName{
-    required uint32 messageField=1;
+message DBContSignProto{
+    required int32 lastOnlineDay = 1;               // 最后一天登录时间
+    required int32 cumulativeNum = 2;               // 累计登陆天数
+    required int32 cumulativeRewardNum = 3;        // 可领取的奖励天数
+    required int32 consecutiveNum = 4;              // 连续登陆天数
+    required int32 consecutiveReceiveFlag = 5;     // 连续签到领取标签
+    //required int32 livenessReceiveFlag = 6;        // 活跃奖励领取标签
+    //required LivenessTargetProto livenessTarget = 7;
 }

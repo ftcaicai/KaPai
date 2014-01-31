@@ -80,3 +80,13 @@ message RewardProto {
     optional int32 experience = 2;              // 经验    
     optional int32 energy = 3;                  // 体力
 }
+
+message ContSignProto{
+    required int32 cumulativeNum = 1;               // 累计登陆天数
+    required int32 cumulativeRewardNum = 2;        // 可领取的奖励天数
+    required int32 consecutiveNum = 3;              // 连续登陆天数
+    required int32 consecutiveReceiveFlag = 4;     // 连续签到领取标签
+    //required int32 liveness = 5; //活跃度
+    //required int32 livenessReceiveFlag = 6; // 活跃奖励领取标签
+    //required LivenessTargetProto livenessTarget = 7;    // 活跃度目标
+}

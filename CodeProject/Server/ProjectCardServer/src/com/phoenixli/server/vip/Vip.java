@@ -5,7 +5,7 @@
 package com.phoenixli.server.vip;
 
 import com.phoenix.protobuf.ExternalCommonProtocol.VipProto;
-import com.phoenixli.config.VipConfig;
+import com.phoenixli.config.vip.VipConfig;
 import com.phoenixli.server.ProjectCardServer;
 import com.phoenixli.server.actor.Human;
 import com.phoenixli.server.message.messageBuilder.ServerToClientMessageBuilder;

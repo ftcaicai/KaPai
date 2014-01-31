@@ -24,4 +24,8 @@ public class ProtobufMessageType {
     public static final int S2C_NOCHARRET = 12;         // 未创建角色
     public static final int S2C_CREATECHARERROR = 13;   // 创建角色失败
     public static final int S2C_ENTERGAMERET = 14;      // 进入游戏
+    
+    public static final int S2C_CONTSIGN_CUMULATIVE_REWARD_RECEIVED = 21;       // 累计登陆奖励领取
+    public static final int S2C_CONTSIGN_CONSECUTIVE_REWARD_RECEIVED = 22;      // 连续登陆奖励领取
+    public static final int S2C_CONTSIGN = 23;                                  // 签到信息变更
 }

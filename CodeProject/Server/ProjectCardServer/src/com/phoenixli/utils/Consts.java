@@ -36,6 +36,7 @@ public class Consts {
     
     public static final String MAP_CONFIG_FILEPATH = "mapConfig.json";      // map常量相关配置
     public static final String VIP_CONFIG_FILEPATH = "vipConfig.json";      //vip常量相关配置
+    public static final String CONT_SIGN_CONFIG_FILEPATH = "contSignConfig.json"; // 活跃度与登录奖励常量相关配置
     
     
     public static final int REWARD_ITEM_TYPE_CARD = 0;                      // 卡片
@@ -47,5 +48,8 @@ public class Consts {
     public static final int REWARD_ITEM_TYPE_EXPERIENCE = 6;                // 经验值
     public static final int REWARD_ITEM_TYPE_ENERGY = 7;                    // 体力值
     
+    
+    public static final int SOUL_CHANGE_LOG_TYPE_CUMULATIVE_SIGN_REWARD = 114;      // 累计签到奖
+    public static final int SOUL_CHANGE_LOG_TYPE_CONSECUTIVE_SIGN_REWARD = 115;     // 连续签到奖
     
 }

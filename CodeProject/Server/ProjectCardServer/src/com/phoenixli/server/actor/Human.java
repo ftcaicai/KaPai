@@ -4,7 +4,9 @@
  */
 package com.phoenixli.server.actor;
 
+import com.phoenixli.common.protobufMessage.ProtobufMessage;
 import com.phoenixli.server.player.MapPlayer;
+import com.phoenixli.server.reward.CertainRewardsInfo;
 
 /**
  *
@@ -28,5 +30,16 @@ public class Human {
     
     public void leaveGame() {
         
+    }
+    
+    public void digestCertainReward(CertainRewardsInfo rewardInfo, int type, int subType) {
+        
+    }
+    
+    public void sendMessage(ProtobufMessage message) {
+        if ((mapPlayer != null) && (mapPlayer.channelContext != null))
+        {
+            mapPlayer.channelContext.write(message);
+        }
     }
 }
