@@ -15,6 +15,7 @@ import com.phoenixli.server.message.messageBuilder.ServerToClientMessageBuilder;
 import com.phoenixli.server.player.MapPlayer;
 import com.phoenixli.server.reward.CertainRewardItemInfo;
 import com.phoenixli.server.reward.CertainRewardsInfo;
+import com.phoenixli.server.stage.Stages;
 import com.phoenixli.server.vip.Vip;
 import com.phoenixli.server.vip.VipGift;
 import com.phoenixli.utils.Consts;
@@ -45,6 +46,8 @@ public class Human {
     
     public ContSign contSign;           // 登录签到奖励
 
+    public Stages stages;               // 关卡相关
+    
     public int ip;                      // 玩家登陆ip
     public long enterTime;              // 最近一次登陆游戏时间
     public long leaveTime;              // 最后一次离开游戏时间

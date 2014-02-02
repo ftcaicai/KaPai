@@ -56,11 +56,16 @@ public class Consts {
     public static final int SOUL_CHANGE_LOG_TYPE_CUMULATIVE_SIGN_REWARD = 1;      // 累计签到奖
     public static final int SOUL_CHANGE_LOG_TYPE_CONSECUTIVE_SIGN_REWARD = 2;     // 连续签到奖
     public static final int SOUL_CHANGE_LOG_TYPE_VIP_REWARD = 3;                  // vip奖励
+    public static final int SOUL_CHANGE_LOG_TYPE_QUEST = 4;                       // 任务
+    
     
     public static final int MAX_NOTIFY_CACHE_NUM = 100;                     // 离线消息最大存储数量
-     public static final int ALLOW_TALK_LEVEL = 10;                         // 允许世界频道聊天的等级
+    public static final int ALLOW_TALK_LEVEL = 10;                          // 允许世界频道聊天的等级
     
     public static final int CHAT_WORLD_CHANNEL = 0;                         //聊天世界频道
     public static final int CHAT_PRIVATE_CHANNEL= 2 ;                       //聊天私聊频道
     public static final int CHAT_SYSTEM_CHANNEL = 4;                        //聊天系统频道
+    
+    public static final int QUEST_TYPE_STAGE = 1;                           // 任务类型：过关
+    public static final int QUEST_TYPE_LEVEL = 2;                           // 任务类型：升级
 }

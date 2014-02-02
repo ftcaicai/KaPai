@@ -49,4 +49,8 @@ public class ProtobufMessageType {
     public static final int S2C_NOTIFICATION = 61;              // 通知协议
     public static final int S2C_TALK = 62;                      // 聊天通知
     
+    public static final int S2C_QUEST_FINISHED = 71;            // 任务完成
+    public static final int S2C_QUEST_SUBMITTED = 72;           // 任务提交
+    public static final int S2C_QUEST_ADD_LIST = 73;            // 开启任务列表
+    
 }

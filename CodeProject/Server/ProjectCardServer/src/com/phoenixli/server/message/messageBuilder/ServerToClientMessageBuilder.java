@@ -10,10 +10,13 @@ import com.phoenix.protobuf.ExternalCommonProtocol.EnterGameRetProto;
 import com.phoenix.protobuf.ExternalCommonProtocol.IntValueProto;
 import com.phoenix.protobuf.ExternalCommonProtocol.LongValueProto;
 import com.phoenix.protobuf.ExternalCommonProtocol.NoteProto;
+import com.phoenix.protobuf.ExternalCommonProtocol.QuestsProto;
 import com.phoenix.protobuf.ExternalCommonProtocol.TalkProto;
 import com.phoenix.protobuf.ExternalCommonProtocol.VipProto;
 import com.phoenixli.common.protobufMessage.ProtobufMessage;
 import com.phoenixli.common.protobufMessage.ProtobufMessageType;
+import com.phoenixli.server.quest.Quest;
+import java.util.LinkedList;
 
 /**
  *
@@ -118,5 +121,27 @@ public class ServerToClientMessageBuilder {
         builder.setResult(0);
         builder.setEnterGameChar(enterGameCharProto);
         return new ProtobufMessage(ProtobufMessageType.S2C_ENTER_GAME_RET, builder.build());
+    }
+    
+    public static ProtobufMessage buildQuestFinished(int questId) {
+        IntValueProto.Builder builder = IntValueProto.newBuilder();
+        builder.setValue(questId);
+        return new ProtobufMessage(ProtobufMessageType.S2C_QUEST_FINISHED, builder.build());
+    }
+
+    public static ProtobufMessage buildQuestSubmitted(int questId) {
+        IntValueProto.Builder builder = IntValueProto.newBuilder();
+        builder.setValue(questId);
+        return new ProtobufMessage(ProtobufMessageType.S2C_QUEST_SUBMITTED, builder.build());
+    }
+    
+    public static ProtobufMessage buildQuestAddList(LinkedList<Quest> quests) {
+        QuestsProto.Builder builder = QuestsProto.newBuilder();
+
+        for (Quest quest : quests) {
+            builder.addQuests(quest.buildQuestProto());
+        }
+
+        return new ProtobufMessage(ProtobufMessageType.S2C_QUEST_ADD_LIST, builder.build());
     }
 }
