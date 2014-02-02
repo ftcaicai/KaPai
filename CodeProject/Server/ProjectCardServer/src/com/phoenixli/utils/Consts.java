@@ -36,9 +36,13 @@ public class Consts {
     
     public static final String MAP_CONFIG_FILEPATH = "mapConfig.json";      // map常量相关配置
     public static final String VIP_CONFIG_FILEPATH = "vipConfig.json";      //vip常量相关配置
-    public static final String CONT_SIGN_CONFIG_FILEPATH = "contSignConfig.json"; // 活跃度与登录奖励常量相关配置
-    
-    
+    public static final String CONT_SIGN_CONFIG_FILEPATH = "contSignConfig.json";           // 活跃度与登录奖励常量相关配置
+    public static final String HUMAN_LEVELS_CONFIG_FILEPATH = "humanLevelsConfig.json";     // 玩家等级相关配置
+    public static final String VIP_GIFT_CONFIG_FILEPATH = "vipGiftConfig.json";             // VIP赠礼相关配置
+    public static final String STAGES_CONFIG_FILEPATH = "stagesConfig.json";                // 关卡相关配置
+    public static final String QUESTS_CONFIG_FILEPATH = "questsConfig.json";                // 任务相关配置
+            
+            
     public static final int REWARD_ITEM_TYPE_CARD = 0;                      // 卡片
     public static final int REWARD_ITEM_TYPE_ITEM = 1;                      // 物品
     public static final int REWARD_ITEM_TYPE_GOLD = 2;                      // 黄金
@@ -49,7 +53,14 @@ public class Consts {
     public static final int REWARD_ITEM_TYPE_ENERGY = 7;                    // 体力值
     
     
-    public static final int SOUL_CHANGE_LOG_TYPE_CUMULATIVE_SIGN_REWARD = 114;      // 累计签到奖
-    public static final int SOUL_CHANGE_LOG_TYPE_CONSECUTIVE_SIGN_REWARD = 115;     // 连续签到奖
+    public static final int SOUL_CHANGE_LOG_TYPE_CUMULATIVE_SIGN_REWARD = 1;      // 累计签到奖
+    public static final int SOUL_CHANGE_LOG_TYPE_CONSECUTIVE_SIGN_REWARD = 2;     // 连续签到奖
+    public static final int SOUL_CHANGE_LOG_TYPE_VIP_REWARD = 3;                  // vip奖励
     
+    public static final int MAX_NOTIFY_CACHE_NUM = 100;                     // 离线消息最大存储数量
+     public static final int ALLOW_TALK_LEVEL = 10;                         // 允许世界频道聊天的等级
+    
+    public static final int CHAT_WORLD_CHANNEL = 0;                         //聊天世界频道
+    public static final int CHAT_PRIVATE_CHANNEL= 2 ;                       //聊天私聊频道
+    public static final int CHAT_SYSTEM_CHANNEL = 4;                        //聊天系统频道
 }

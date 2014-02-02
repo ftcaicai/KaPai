@@ -5,6 +5,8 @@
 package com.phoenixli.server.threadHandler;
 
 import com.google.gson.JsonSyntaxException;
+import com.phoenix.protobuf.ExternalCommonProtocol.CreateCharProto;
+import com.phoenix.protobuf.ExternalCommonProtocol.IntValueProto;
 import com.phoenix.protobuf.ExternalCommonProtocol.LoginProto;
 import com.phoenixli.common.loginAuth.JSONLoginAuthData;
 import com.phoenixli.common.loginAuth.JSONLoginAuthRetData;
@@ -101,7 +103,26 @@ public class PlayerConnectHandler extends SimpleChannelUpstreamHandler {
                     }
                     break;
                 case ProtobufMessageType.C2S_CREATECHAR:
+                    CreateCharProto createCharInfo = CreateCharProto.getDefaultInstance().newBuilderForType().mergeFrom(new ChannelBufferInputStream(cb)).build();
+                    ServerMessageQueue.queue().offer(ServerMessageBuilder.buildCreateCharMessage(playerId, createCharInfo));
                     break;
+                    
+                case ProtobufMessageType.C2S_CONTSIGN_CUMULATIVE_REWARD_RECEIVED: {
+                    ServerMessageQueue.queue().offer(ServerMessageBuilder.buildContSignCumulativeSignRewardReceiveMessage(playerId));
+                    break;
+                }
+                case ProtobufMessageType.C2S_CONTSIGN_CONSECUTIVE_REWARD_RECEIVED: {
+                    IntValueProto intValue = IntValueProto.getDefaultInstance().newBuilderForType().mergeFrom(new ChannelBufferInputStream(cb)).build();
+                    ServerMessageQueue.queue().offer(ServerMessageBuilder.buildContSignConsecutiveRewardReceiveMessage(playerId, intValue.getValue()));
+                    break;
+                }
+                case ProtobufMessageType.C2S_VIP_GIFT_RECEIVE: {
+                    IntValueProto intValue = IntValueProto.getDefaultInstance().newBuilderForType().mergeFrom(new ChannelBufferInputStream(cb)).build();
+                    ServerMessageQueue.queue().offer(ServerMessageBuilder.buildVipGiftReceiveMessage(playerId, intValue.getValue()));
+                    break;
+                }
+                    
+                   
             }
         } catch (IOException ex) {
             System.err.println("Player[" + playerId + "] Message Received Type: " + type + " Error: " + ex.getMessage());

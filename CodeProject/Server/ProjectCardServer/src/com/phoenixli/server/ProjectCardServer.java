@@ -13,13 +13,22 @@ import com.phoenixli.common.messageQueue.DBMessageQueue;
 import com.phoenixli.common.messageQueue.NetworkSendThreadMessageQueue;
 import com.phoenixli.common.messageQueue.ServerMessageQueue;
 import com.phoenixli.common.pipelineFactory.CommonToServerPipelineFactory;
+import com.phoenixli.common.protobufMessage.ProtobufMessage;
+import com.phoenixli.config.ContSignConfig;
+import com.phoenixli.config.HumanLevelsConfig;
+import com.phoenixli.config.MapConfig;
+import com.phoenixli.config.QuestsConfig;
+import com.phoenixli.config.StagesConfig;
+import com.phoenixli.config.VipGiftConfig;
 import com.phoenixli.server.actor.Human;
 import com.phoenixli.server.listenerServer.PlayerConnectServer;
 import com.phoenixli.server.message.messageBuilder.DBMessageBuilder;
+import com.phoenixli.server.message.messageBuilder.ServerToClientMessageBuilder;
 import com.phoenixli.server.message.networkSendThreadMessage.AddChannelContextNSTMessage;
 import com.phoenixli.server.message.serverMessage.LoginMessage;
 import com.phoenixli.server.player.MapPlayer;
 import com.phoenixli.server.player.Player;
+import com.phoenixli.server.player.state.NormalPlayerState;
 import com.phoenixli.server.threadHandler.DBThreadHandler;
 import com.phoenixli.server.threadHandler.NetworkSendThreadHandler;
 import com.phoenixli.server.threadHandler.PlayerConnectHandler;
@@ -32,6 +41,7 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.HashMap;
+import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -96,6 +106,27 @@ public class ProjectCardServer implements Runnable {
     
     // 标志服务是否正在关闭
     private volatile boolean isShuttingDown = false;
+    
+    // 全服广播
+    public void broadcast(ProtobufMessage message) {
+        for (MapPlayer mapPlayer : players.values()) {
+            if (mapPlayer.state == NormalPlayerState.INSTANCE) {
+                mapPlayer.channelContext.write(message);
+            }
+        }
+    }
+    
+    // 对指定玩家发送消息
+    public void broadcast(List<Integer> charIds, ProtobufMessage message, boolean needOffLineSend) {
+        for (int charId : charIds) {
+            MapPlayer mapPlayer = players.get(charId);
+            if (mapPlayer != null && mapPlayer.state == NormalPlayerState.INSTANCE) {
+                mapPlayer.channelContext.write(message);
+            } else if (needOffLineSend) {
+                //离线消息
+            }
+        }
+    }
     
     private String parseArg(String[] args, String param) {
         int argsNum = args.length;
@@ -241,7 +272,10 @@ public class ProjectCardServer implements Runnable {
     }
     
     public void enterGame(MapPlayer player) {
-        
+        Human human = player.human;
+        assert (human != null);
+
+        human.enterGame();
     }
     
     public PlayerContext loadPlayerData(int playerId) {
@@ -434,7 +468,7 @@ public class ProjectCardServer implements Runnable {
                 
                 // 心跳 - 广播到客户端，客户端进行校时
                 if (realCurrTime / Consts.MILSECOND_1MINITE > realPrevTime / Consts.MILSECOND_1MINITE) {
-                    //broadcast(ClientToMapBuilder.buildRealTime(realCurrTime));
+                    broadcast(ServerToClientMessageBuilder.buildRealTime(realCurrTime));
                 }
                 
                 handleMessages();
@@ -462,6 +496,40 @@ public class ProjectCardServer implements Runnable {
             }
         }
     }
+    
+     public void loadResources() {
+        // 注意：以下代码用于预加载资源
+        HumanLevelsConfig humanLevelsConfig = HumanLevelsConfig.INSTANCE;
+        //CardLevelsConfig cardLevelsConfig = CardLevelsConfig.INSTANCE;
+        //HumanRanksConfig humanRanksConfig = HumanRanksConfig.INSTANCE;
+        MapConfig mapConfig = MapConfig.INSTANCE;
+        StagesConfig stagesConfig = StagesConfig.INSTANCE;
+        //TalentsConfig talentsConfig = TalentsConfig.INSTANCE;
+        //CardDrawsConfig cardDrawsConfig = CardDrawsConfig.INSTANCE;
+        ContSignConfig contSignConfig = ContSignConfig.INSTANCE;
+        VipGiftConfig vipGiftConfig = VipGiftConfig.INSTANCE;
+        //RobotsConfig robotsConfig = RobotsConfig.INSTANCE;
+        //NameGenerator nameGenerator = NameGenerator.INSTANCE;
+
+       /*
+        JSONPveBattlesConfig jsonBattlesConfig = JSONHelper.parseFileNoException(serverId + "/" + Consts.BATTLESCONFIG_FILEPATH, JSONPveBattlesConfig.class);
+        jsonBattlesConfig.buildPveBattlesConfig();
+
+        CardsConfig cardsConfig = JSONHelper.parseFileNoException(serverId + "/" + Consts.CARDSCONFIG_FILEPATH, CardsConfig.class);
+        cardsConfig.buildCardFactories();
+
+        SkillsConfig skillsConfig = JSONHelper.parseFileNoException(serverId + "/" + Consts.SKILLSCONFIG_FILEPATH, SkillsConfig.class);
+        skillsConfig.buildSkills();
+        */
+        
+        QuestsConfig jsonQuestsConfig = QuestsConfig.INSTANCE;
+        jsonQuestsConfig.buildQuestsConfig();
+        
+        /*
+        JSONItemsConfig jsonItemsConfig = JSONHelper.parseFileNoException(serverId + "/" + Consts.ITEMSCONFIG_FILEPATH, JSONItemsConfig.class);
+        jsonItemsConfig.buildItemsConfig();
+        */
+    }
 
     /**
      * @param args the command line arguments
@@ -482,6 +550,8 @@ public class ProjectCardServer implements Runnable {
                 System.err.println("Can't connect to database[" + ProjectCardServer.INSTANCE.dbHost + ":" + ProjectCardServer.INSTANCE.dbName + "].");
                 return;
             }
+            
+            ProjectCardServer.INSTANCE.loadResources();
             
             ProjectCardServer.INSTANCE.init();
             ProjectCardServer.INSTANCE.start();

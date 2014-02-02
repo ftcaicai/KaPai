@@ -90,3 +90,66 @@ message ContSignProto{
     //required int32 livenessReceiveFlag = 6; // 活跃奖励领取标签
     //required LivenessTargetProto livenessTarget = 7;    // 活跃度目标
 }
+
+message TalkProto{
+    required int32 channelType = 1;
+    required string msg = 2;
+    optional int32 sendPlayerId = 3;
+    optional string sendPlayerName = 4;
+    optional int32 recvPlayerId = 5;
+    optional string recvPlayerName = 6;
+}
+
+// 通知类PROTO
+message NoteProto{
+    required int32 type = 1;         // 通知消息类型
+    optional bytes data = 2;        // 消息数据
+}
+
+message BeAddFriendNoteProto {
+    required int32 id = 1;
+    required string name = 2;
+}
+
+message EnterGameCharProto {
+    required int32 charId = 1;              // id
+    required string charName = 2;          // 名字
+    required int32 charLevel = 3;          // 等级
+    required int32 charExp = 4;            // 经验值
+    required int64 goldCoin = 5;           // 黄金（充值）
+    required int64 silverCoin = 6;         // 白银（非充值）
+    required int64 diamond = 7;            // 钻石
+    required int64 popularity = 8;         // 声望
+    required int32 energy = 9;             // 体力
+    required int32 token = 10;             // 军令
+
+    optional VipProto vip = 11;           // vip
+    optional int32 vipGift = 12;          // vip赠礼
+
+    optional ContSignProto contSign = 13;   // 签到
+
+    optional int64 endForbidTalkTime = 14;   // 禁言结束时间 <0 没有禁言 单位毫秒
+}
+
+message EnterGameRetProto {
+    required int32 result = 1;
+    optional string errmsg = 2;
+
+    optional EnterGameCharProto enterGameChar = 3;
+}
+
+message QuestProto {
+    required int32 questId = 1;
+    optional bool finished = 2;
+}
+
+message QuestsProto {
+    repeated QuestProto quests = 1;
+}
+
+message StagesProto{
+    required int32 currentNormalStageId = 1;
+    required int32 currentBigStageId = 2;
+    optional int32 lastBigStageDay = 3;                     // 最后一次通过精英关卡的日期
+    repeated VariableValueProto lastBigStages = 4;        // 在lastBigStageDay所在的一天里通过的精英副本次数
+}

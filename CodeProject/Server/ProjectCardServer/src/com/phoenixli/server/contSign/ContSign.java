@@ -6,7 +6,7 @@ package com.phoenixli.server.contSign;
 
 import com.phoenix.protobuf.ExternalCommonProtocol.ContSignProto;
 import com.phoenix.protobuf.InternalCommonProtocol.DBContSignProto;
-import com.phoenixli.config.contSign.ContSignConfig;
+import com.phoenixli.config.ContSignConfig;
 import com.phoenixli.server.ProjectCardServer;
 import com.phoenixli.server.actor.Human;
 import com.phoenixli.server.message.messageBuilder.ServerToClientMessageBuilder;

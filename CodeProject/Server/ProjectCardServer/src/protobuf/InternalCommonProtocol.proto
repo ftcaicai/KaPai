@@ -5,6 +5,10 @@ option optimize_for = SPEED;
 
 import "src/protobuf/ExternalCommonProtocol.proto";
 
+message DBPlayerDetailProto{
+
+}
+
 message DBContSignProto{
     required int32 lastOnlineDay = 1;               // 最后一天登录时间
     required int32 cumulativeNum = 2;               // 累计登陆天数

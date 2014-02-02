@@ -29,7 +29,6 @@ public class UninitPlayerState implements PlayerState {
             case MAP_GET_CHAR_DETAIL_INFO_RET: {
                 ProjectCardServer.INSTANCE.enterGame(p);
                 p.state = NormalPlayerState.INSTANCE;
-
                 return true;
             }
             default: {

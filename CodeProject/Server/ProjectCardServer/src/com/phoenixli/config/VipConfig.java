@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.phoenixli.config.vip;
+package com.phoenixli.config;
 
 import com.phoenixli.server.ProjectCardServer;
 import com.phoenixli.utils.Consts;

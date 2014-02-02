@@ -4,12 +4,17 @@
  */
 package com.phoenixli.server.message.messageBuilder;
 
+import com.phoenix.protobuf.ExternalCommonProtocol.CreateCharProto;
 import com.phoenixli.common.message.serverMessage.ExternalPlayerMessage;
+import com.phoenixli.common.message.serverMessage.InternalPlayerMessage;
 import com.phoenixli.common.message.serverMessage.Message;
 import com.phoenixli.common.message.serverMessage.Message.MessageType;
 import com.phoenixli.server.message.serverMessage.CharNumMessage;
+import com.phoenixli.server.message.serverMessage.ContSignConsecutiveRewardReceiveMessage;
+import com.phoenixli.server.message.serverMessage.CreateCharMessage;
 import com.phoenixli.server.message.serverMessage.CreateCharRetMessage;
 import com.phoenixli.server.message.serverMessage.LoginMessage;
+import com.phoenixli.server.message.serverMessage.VipGiftReceiveMessage;
 import org.jboss.netty.channel.Channel;
 
 /**
@@ -35,5 +40,21 @@ public class ServerMessageBuilder {
     
      public static Message buildCreateCharRetMessage(int playerId, int result) {
         return new CreateCharRetMessage(playerId, result);
+    }
+     
+     public static Message buildCreateCharMessage(int playerId, CreateCharProto charInfo) {
+        return new CreateCharMessage(playerId, charInfo);
+    }
+     
+     public static Message buildContSignCumulativeSignRewardReceiveMessage(int playerId) {
+        return new InternalPlayerMessage(MessageType.MAP_CONTSIGN_CUMULATIVE_REWARD_RECEIVE, playerId);
+    }
+
+    public static Message buildContSignConsecutiveRewardReceiveMessage(int playerId, int day) {
+        return new ContSignConsecutiveRewardReceiveMessage(playerId, day);
+    }
+    
+    public static Message buildVipGiftReceiveMessage(int playerId, int vip) {
+        return new VipGiftReceiveMessage(playerId, vip);
     }
 }
