@@ -37,12 +37,12 @@ public class ProtobufMessageType {
     public static final int S2C_VIP_CHANGE = 31;        // VIP信息变更
     public static final int S2C_VIP_GIFT_RECEIVE = 32;  // VIP赠礼信息领取
     
-    public static final int S2C_GOLD_COIN_CHANGE = 41;          // 
-    public static final int S2C_SILVER_COIN_CHANGE = 42;        //
-    public static final int S2C_DIAMOND_CHANGE = 43;            //
-    public static final int S2C_POPULARITY_CHANGE = 44;         //
-    public static final int S2C_EXPERIENCE_CHANGE = 45;         //
-    public static final int S2C_ENERGY_CHANGE = 46;             //
+    public static final int S2C_GOLD_COIN_CHANGE = 41;          // 金币数量变化
+    public static final int S2C_SILVER_COIN_CHANGE = 42;        // 银币数量变化
+    public static final int S2C_DIAMOND_CHANGE = 43;            // 钻石数量变化
+    public static final int S2C_POPULARITY_CHANGE = 44;         // 声望数量变化
+    public static final int S2C_EXPERIENCE_CHANGE = 45;         // 经验数量变化
+    public static final int S2C_ENERGY_CHANGE = 46;             // 体力数量变化
     
     public static final int S2C_LEVEL_UP = 51;                  // 角色升级
         
@@ -52,5 +52,8 @@ public class ProtobufMessageType {
     public static final int S2C_QUEST_FINISHED = 71;            // 任务完成
     public static final int S2C_QUEST_SUBMITTED = 72;           // 任务提交
     public static final int S2C_QUEST_ADD_LIST = 73;            // 开启任务列表
+    
+    public static final int S2C_ITEM_NUM_CHANGE = 81;           // 物品数量变化
+    public static final int S2C_ITEM_COMBINED = 82;             // 物品合成
     
 }

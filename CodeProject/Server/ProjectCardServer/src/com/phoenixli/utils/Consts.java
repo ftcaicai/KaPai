@@ -34,15 +34,16 @@ public class Consts {
     public static final int DB_KEEPALIVE_INTERVAL = 3600000;                // 3600000ms,保证数据库连接不中断
     public static final String DB_KEEPALIVE_TEST_STATEMENT = "SELECT 1 FROM INFORMATION_SCHEMA.VIEWS WHERE table_name IS NULL";
     
-    public static final String MAP_CONFIG_FILEPATH = "mapConfig.json";      // map常量相关配置
-    public static final String VIP_CONFIG_FILEPATH = "vipConfig.json";      //vip常量相关配置
+    public static final String MAP_CONFIG_FILEPATH = "mapConfig.json";                      // Server常量相关配置
+    public static final String VIP_CONFIG_FILEPATH = "vipConfig.json";                      // VIP常量相关配置
     public static final String CONT_SIGN_CONFIG_FILEPATH = "contSignConfig.json";           // 活跃度与登录奖励常量相关配置
     public static final String HUMAN_LEVELS_CONFIG_FILEPATH = "humanLevelsConfig.json";     // 玩家等级相关配置
     public static final String VIP_GIFT_CONFIG_FILEPATH = "vipGiftConfig.json";             // VIP赠礼相关配置
     public static final String STAGES_CONFIG_FILEPATH = "stagesConfig.json";                // 关卡相关配置
     public static final String QUESTS_CONFIG_FILEPATH = "questsConfig.json";                // 任务相关配置
-            
-            
+    public static final String ITEMS_CONFIG_FILEPATH = "itemsConfig.json";                  // 物品相关配置
+    public static final String CARDS_CONFIG_FILEPATH = "cardsConfig.json";                  // 卡片相关配置
+    
     public static final int REWARD_ITEM_TYPE_CARD = 0;                      // 卡片
     public static final int REWARD_ITEM_TYPE_ITEM = 1;                      // 物品
     public static final int REWARD_ITEM_TYPE_GOLD = 2;                      // 黄金

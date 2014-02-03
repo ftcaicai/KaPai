@@ -12,6 +12,7 @@ import com.phoenix.protobuf.ExternalCommonProtocol.LongValueProto;
 import com.phoenix.protobuf.ExternalCommonProtocol.NoteProto;
 import com.phoenix.protobuf.ExternalCommonProtocol.QuestsProto;
 import com.phoenix.protobuf.ExternalCommonProtocol.TalkProto;
+import com.phoenix.protobuf.ExternalCommonProtocol.VariableValueProto;
 import com.phoenix.protobuf.ExternalCommonProtocol.VipProto;
 import com.phoenixli.common.protobufMessage.ProtobufMessage;
 import com.phoenixli.common.protobufMessage.ProtobufMessageType;
@@ -143,5 +144,20 @@ public class ServerToClientMessageBuilder {
         }
 
         return new ProtobufMessage(ProtobufMessageType.S2C_QUEST_ADD_LIST, builder.build());
+    }
+    
+    public static ProtobufMessage buildItemNumChange(int id, int num) {
+        VariableValueProto.Builder builder = VariableValueProto.newBuilder();
+        builder.setId(id);
+        builder.setValue(num);
+
+        return new ProtobufMessage(ProtobufMessageType.S2C_ITEM_NUM_CHANGE, builder.build());
+    }
+
+    public static ProtobufMessage buildItemCombined(int id) {
+        IntValueProto.Builder builder = IntValueProto.newBuilder();
+        builder.setValue(id);
+
+        return new ProtobufMessage(ProtobufMessageType.S2C_ITEM_COMBINED, builder.build());
     }
 }

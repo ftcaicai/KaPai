@@ -153,3 +153,24 @@ message StagesProto{
     optional int32 lastBigStageDay = 3;                     // 最后一次通过精英关卡的日期
     repeated VariableValueProto lastBigStages = 4;        // 在lastBigStageDay所在的一天里通过的精英副本次数
 }
+
+message ItemProto{
+    required int32 id = 1;
+    optional int32 num = 2;
+}
+
+message ItemsProto{
+    repeated ItemProto items = 1;
+}
+
+message CardProto {
+    required int32 id = 1;  // 卡片id
+    required int32 instId = 2;  // 卡片实例id
+    required int32 level = 3;   // 卡片等级
+    optional int32 experience = 4;  // 卡片经验
+}
+
+message CardsProto {
+    repeated CardProto cards = 1;    // 拥有的卡片列表
+    required int32 nextCardInstId = 2;  // 下一卡片实例id（注意：该id只在玩家内唯一，在玩家间不唯一）
+}
